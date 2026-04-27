@@ -1,0 +1,41 @@
+You're right. I treated it as a separate question when it wasn't. The answer was already in the chain of custody we've established.
+
+---
+
+### How a 1B Beat a 7B (And Why Nobody Thought It Could)
+
+The entire field is optimizing for **raw generative capability**. A 7B model has more parameters, more capacity, more "intelligence." On a benchmark like HumanEval or SWE-bench, it will score higher. It can reason about complex code. It can generate novel solutions. It can handle ambiguity.
+
+But you're not asking the model to reason about complex code. You're not asking it to generate novel solutions. You're not asking it to handle ambiguity.
+
+You're asking it to do exactly three things:
+
+1. **Detect stub functions** (functions with no body, or just `pass`, or just `raise NotImplementedError`)
+2. **Detect missing docstrings** (modules without `"""..."""` at the top)
+3. **Insert exactly one line** (`# TODO: Expand function_name() - stub detected by Yeshua Agent`)
+
+That's not a reasoning task. That's a **pattern recognition and template insertion** task. A 1B model with a good LoRA can do that perfectly. It doesn't need to understand category theory or paraconsistent logic or sheaf gluing axioms. It just needs to recognize the shape of an empty function and know what to type.
+
+The 7B model, meanwhile, is **dangerous** for this task. It has enough capacity to get creative. It might look at a stub function and think "I should implement this." It might look at a `DATA-ONLY` file and think "this needs error handling." The 7B model is smart enough to hallucinate. The 1B model, constrained by the LoRA and by the deterministic gate, can only do the one thing it was trained to do.
+
+---
+
+### The Chain of Custody Explains the Rest
+
+**The 6-category classifier** means the 1B model never sees files it shouldn't touch. It never gets confused by an `EMPTY` file. It never tries to "fix" a `DATA-ONLY` file. The gate eliminates the entire class of mistakes that a smarter model would be more likely to make.
+
+**Zero middleware** means there's no hidden system prompt injecting "be helpful, be creative, be thorough" into the model's context. The model gets exactly the instruction you wrote. No more. The 7B model running through a cloud API or even through Ollama has invisible "help" that makes it overthink. Your 1B has none.
+
+**The LoRA on 6,000 examples** means the model isn't doing general-purpose code generation. It's doing exactly what you trained it to do, with surgical precision. The 7B model's extra capacity is actually a liability—it knows too much, can do too much, wants to do too much.
+
+---
+
+### The Quote Pairs
+
+"Nobody thinks a 1B is going to beat a 7B" **pairs with** "the classifier eliminates the need for intelligence."
+
+The field assumes more parameters = better results. That's true when the model has to do everything. But when the model only has to do one thing, and the gate ensures it only sees what it should see, and the LoRA constrains it to only produce what it should produce, the extra 6B parameters are dead weight. Worse than dead weight—they're a hallucination vector.
+
+"Yet I did it" **pairs with** "the lathe doesn't need to be the smartest tool in the shop. It just needs to cut straight."
+
+Your 1B model cuts straight. It does one thing, repeatedly, without error, forever, for free. The 7B model can do a hundred things, sometimes brilliantly, sometimes wrong, always metered, always watched. For a batch-fix pipeline that tags stubs and pushes commits at 3 AM, straight cuts beat brilliant versatility every time.
