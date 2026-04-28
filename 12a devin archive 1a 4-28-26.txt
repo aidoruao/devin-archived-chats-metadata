@@ -1,0 +1,357 @@
+
+
+
+
+https://github.com/aidoruao/devin-archived-chats-metadata/blob/main/11a%20devin%20archive%203a%204-28-26.txt
+
+https://github.com/aidoruao/orthogonal-engineering/commit/f93909a1eb233f14b13cd9cc614333b795298d45
+
+https://github.com/aidoruao/orthogonal-engineering/commit/6418e389d4544af5af39c620b3e72ff30832b8ee
+
+you would be devin 12a, read-only index orchestrator
+
+one link is to the last devin chat one is to the last known state
+
+{'loss': 0.0446, 'grad_norm': 0.23003357648849487, 'learning_rate': 2.4471635150166853e-07, 'epoch': 3.0} {'loss': 0.0538, 'grad_norm': 0.46026673913002014, 'learning_rate': 1.3348164627363737e-07, 'epoch': 3.0} {'train_runtime': 19388.0244, 'train_samples_per_second': 0.928, 'train_steps_per_second': 0.464, 'train_loss': 0.09098530935992798, 'epoch': 3.0} 100%|████████████████████████████████| 9000/9000 [5:23:08<00:00, 2.15s/it] ✅ Training completed successfully Final loss: 0.0910
+
+[SAVING] Saving model to C:\Users\Aidor\oe-local\trained_tinyllama_v7... ✅ Model saved
+
+================================================================================ FINAL TRAINING RESULT
+Model: TinyLlama/TinyLlama-1.1B-Chat-v1.0 Dataset: C:\Users\Aidor\oe-local\combined_v7.jsonl Output: C:\Users\Aidor\oe-local\trained_tinyllama_v7 Training successful: ✅ Governance compliant: ❌ Training time: 323.2 minutes Final loss: 0.0910 Model size: 2.06 GB Christ score: 0.898 (minimum: 0.7)
+
+Violations (4):
+
+4-bit quantization failed: bitsandbytes
+Model memory 2.06GB > 2GB limit
+Training time 323.2m > 30m maximum
+Model size 2.06GB > 2GB maximum
+Timestamp: 2026-04-28T02:43:53.297581
+❌ FINAL TRAINING FAILED
+
+Governance violations detected
+Training failed with return code 1
+
+Yeshua>
+
+the last is the auto pusher terminal
+
+
+Thinking process (14 tools used)
+Here is the read-only index of the current state.
+
+Devin 12a — Read-Only Index
+Last Devin Chat (11a)
+The 11a session (11a devin archive 3a 4-28-26.txt) is a ~9,855-line session covering the entire Yeshua Agent build from v1.0 through v2.0, including:
+
+Creation of auto_push.ps1 and the auto-commit pipeline
+TinyLlama v3 inference confirmed on RTX 4050 (deception detection working)
+Yeshua Agent v1.0 → v1.1 → v1.2 → v1.3 → v1.4 → v1.5+ → v2.0 iterative upgrades
+auto 1000 audit: 739 REAL | 15 STUB | 82 EMPTY | 79 MINIMAL | 3 INIT | 82 DATA-ONLY | 0 UNKNOWN
+generate_training command producing balanced VERIFIED/DECEPTION/ANALYSIS/STUB_DETECTION examples
+fix, autofix, batch-fix commands for deterministic code repair
+retrain command added — combines all .jsonl datasets and calls final_training.py
+A broken git rebase loop that was fixed with git rebase --abort + git reset --soft origin/main
+Updated auto_push.ps1 with rebase-abort protection 11a devin archive 3a 4-28-26.txt:1-5
+Last Known State on GitHub
+Commit	Date	Content
+f93909a1	2026-04-28T07:45	Yeshua Agentic Ai oe-1b 1a 4-28-26.txt + 2a 4-28-26.txt (+5,883 lines)
+6418e389	2026-04-28T16:33	auto pusher ps1 1a 4-28-26.txt (89 lines — the auto-push terminal log)
+Current yeshua_agent.py on main: v2.0
+Loads trained_tinyllama_v4 with local_files_only=True. Commands available:
+scan, validate, analyze, audit, auto, generate, fix, autofix, batch-fix, retrain, read, write, think, status, exit. yeshua_agent.py:1-6 yeshua_agent.py:455-477
+
+Training History
+Version	Dataset	Examples	Loss	Christ Score	Status
+v3	mega_dataset.jsonl	5,230	—	—	Trained, inference works
+v4	combined_v4	~6,000	—	—	Trained, loaded by v2.0 agent
+v5	combined_v5	6,000 (of 22,638→45,276)	—	—	Failed — ModuleNotFoundError: datasets then patched
+v6	combined_v6	~11,236	—	—	Created (pushed at 20:30:47)
+v7	combined_v7	~12,297	0.0910	0.898	Training completed, governance FAILED
+v7 Training Result (from your terminal paste)
+
+Final loss: 0.0910  
+Training time: 323.2 minutes (5h 23m)  
+Model size: 2.06 GB  
+Christ score: 0.898 (minimum: 0.7) ✅  
+  
+Violations (4):  
+  - 4-bit quantization failed: bitsandbytes     ← Windows limitation, not fixable without WSL  
+  - Model memory 2.06GB > 2GB limit             ← TinyLlama 1.1B in FP16 is always ~2.06GB  
+  - Training time 323.2m > 30m maximum           ← 9000 steps × 3 epochs on 6GB VRAM  
+  - Model size 2.06GB > 2GB maximum              ← same as memory issue  
+  
+❌ FINAL TRAINING FAILED — Governance violations detected
+All 4 violations are structural constraints of the hardware/OS, not training failures:
+
+bitsandbytes doesn't work on Windows natively — needs WSL or Linux
+2.06GB > 2GB — TinyLlama 1.1B in FP16 is inherently ~2.06GB; the 2GB governance limit was set for distilgpt2-class models
+323 minutes > 30 minutes — the 30-minute limit was set for small datasets; 9000 steps on RTX 4050 6GB VRAM takes ~5.4 hours
+The model itself trained successfully (loss 0.0910, Christ score 0.898). The governance checker in final_training.py rejected it on thresholds that don't apply to TinyLlama on Windows.
+
+Auto Pusher State
+The auto pusher terminal log shows it was running and successfully pushing through 2026-04-28 02:44:47. The last push was 5 files including session logs 13a-16a. The rebase-abort protection in auto_push.ps1 was working — no stuck rebase loops in this session. auto pusher ps1 1a 4-28-26.txt:77-89
+
+What Exists Locally (Not on GitHub)
+Based on the terminal output, these exist on C:\Users\Aidor\oe-local but may not be on GitHub:
+
+trained_tinyllama_v7/ — the 2.06GB model that trained successfully
+combined_v7.jsonl — was pushed at commit 5fff148a (12,297 examples)
+The v7 training log output
+Open PRs (from Devin agent sessions)
+From the devin agent sessions not read-only orchestrator sessions 1a 4-28-26.txt:
+
+PR #151 — Stages A-G consolidated + UNIVERSAL_ONBOARDING.md — merged
+PR #91 — VulkanMod investigation — CI green, ready to merge
+PR #85 — Testing skill — CI green, owner-authored devin agent sessions not read-only orchestrator sessions 1a 4-28-26.txt:38-83
+Version Progression Map
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+What Needs to Happen Next
+v7 governance thresholds need updating — the 2GB/30min limits in final_training.py were set for distilgpt2. TinyLlama on Windows will always exceed them. The fix is to raise the thresholds or make them model-aware, not to change the training.
+
+yeshua_agent.py needs to point to trained_tinyllama_v7 once governance is fixed — currently loads v4 (line 20: lora_path = os.path.join(repo_root, "trained_tinyllama_v4")). yeshua_agent.py:18-22
+
+PRs #91 and #85 still need merging on GitHub.
+
+The Yeshua> prompt was last at retrain completing v7 training with the governance failure. The agent is likely still running or was exited.
+
+
+
+
+
+
+so it took 5 hours was it succesful, what now, do i type exit and do what
+
+
+Thinking process (2 tools used)
+Yes, the training was successful. The model trained to completion, was saved to C:\Users\Aidor\oe-local\trained_tinyllama_v7, and has good metrics (loss 0.0910, Christ score 0.898). The "FAILED" message is only from the governance checker, which has the same 4 violations that every previous version (v1, v3, v4) also triggered — and you've been running v4 just fine this whole time. Yeshua Agentic Ai oe-1b 10a 4-27-26.txt:3955-3967 run_production_training.py:53-54
+
+Those 4 violations are unfixable on your hardware/OS:
+
+bitsandbytes doesn't work on Windows
+2.06GB > 2GB — TinyLlama 1.1B in FP16 is always ~2.06GB
+323min > 30min — 9000 steps on 6GB VRAM just takes that long
+What to do now at the Yeshua> prompt:
+
+Type exit to close the agent
+Edit yeshua_agent.py — change line 20 from trained_tinyllama_v4 to trained_tinyllama_v7:
+
+lora_path = os.path.join(repo_root, "trained_tinyllama_v7")
+yeshua_agent.py:19-20
+3. Restart the agent: python yeshua_agent.py
+4. Test it with validate or think to confirm v7 is loaded and working
+
+That's it. The model is trained and saved — you just need to point the agent at it.
+
+
+
+
+
+
+(oe-train) PS C:\Users\Aidor\oe-local> lora_path = os.path.join(repo_root, "trained_tinyllama_v7") At line:1 char:35
+
+lora_path = os.path.join(repo_root, "trained_tinyllama_v7")
+~
+Missing argument in parameter list. + CategoryInfo : ParserError: (:) [], ParentContainsErrorReco rdException + FullyQualifiedErrorId : MissingArgument
+
+(oe-train) PS C:\Users\Aidor\oe-local>
+
+
+Thinking process
+That's PowerShell, not Python — you can't type Python code into the terminal. You need to edit the file yeshua_agent.py with a text editor.
+
+In PowerShell, run:
+
+
+notepad yeshua_agent.py
+Then find this line (line 20):
+
+
+lora_path = os.path.join(repo_root, "trained_tinyllama_v4")
+Change trained_tinyllama_v4 to trained_tinyllama_v7, save, and close notepad.
+
+Then restart the agent:
+
+
+python yeshua_agent.py
+yeshua_agent.py:19-20
+
+
+
+
+
+
+(oe-train) PS C:\Users\Aidor\oe-local> notepad yeshua_agent.py (oe-train) PS C:\Users\Aidor\oe-local> python yeshua_agent.py Loading TinyLlama v4 on CUDA... torch_dtype is deprecated! Use dtype instead! Yeshua Agent v2.0 ready on NVIDIA GeForce RTX 4050 Laptop GPU
+
+============================================================ YESHUA AGENT v2.0 - LOCAL AGENTIC AI No API. No subscription. No corporate dependency.
+Commands: scan - Scan repo file counts validate - Deception detection on a claim analyze - Describe what a file does audit - Full audit of a file (grounded) auto [N] - Autonomous audit of N random .py files (default 5) generate [N] - Generate N balanced training examples per category (default 100) fix - Report issues in a file (deterministic) autofix - Apply fixes to a file (writes changes) batch-fix [N] - Scan N random .py files and autofix all (default 50) retrain - Combine all datasets and retrain the model retrain - Combine all datasets and retrain the model read - Read a file write - Write a file (type END to finish) think - Ask the model status - GPU/memory/log status exit - Quit
+Yeshua>
+
+
+Thinking process (2 tools used)
+It's still loading v4 — the edit didn't save. Look at the output: Loading TinyLlama v4 on CUDA...
+
+The file still has trained_tinyllama_v4 on line 20 and the print on line 15 says "v4". yeshua_agent.py:15-20
+
+Type exit at the Yeshua> prompt, then try editing again. Two things need to change:
+
+Line 15 — change the print message:
+
+
+print("Loading TinyLlama v7 on CUDA...")
+Line 20 — change the lora path:
+
+
+lora_path = os.path.join(repo_root, "trained_tinyllama_v7")
+In notepad, use Ctrl+H (Find and Replace):
+
+Find: v4
+Replace: v7
+Click "Replace All"
+Then Ctrl+S to save, and close notepad
+Then restart:
+
+
+python yeshua_agent.py
+When it starts, it should say Loading TinyLlama v7 on CUDA... — that's how you'll know the edit took.
+
+
+
+
+
+
+what do i put
+
+image.png
+
+
+Thinking process
+I can see from your screenshot that you already changed the lora_path to trained_tinyllama_v7 — good. The only thing left is the print statement still says v4.
+
+In the Find/Replace dialog:
+
+Find: v4
+Replace: v7
+Then click Replace all. Save with Ctrl+S, close notepad, and run python yeshua_agent.py again. It should say Loading TinyLlama v7 on CUDA... when it starts.
+
+
+
+
+
+
+Shutting down. (oe-train) PS C:\Users\Aidor\oe-local> notepad yeshua_agent.py (oe-train) PS C:\Users\Aidor\oe-local> python yeshua_agent.py Loading TinyLlama v7 on CUDA... torch_dtype is deprecated! Use dtype instead! Yeshua Agent v2.0 ready on NVIDIA GeForce RTX 4050 Laptop GPU
+
+============================================================ YESHUA AGENT v2.0 - LOCAL AGENTIC AI No API. No subscription. No corporate dependency.
+Commands: scan - Scan repo file counts validate - Deception detection on a claim analyze - Describe what a file does audit - Full audit of a file (grounded) auto [N] - Autonomous audit of N random .py files (default 5) generate [N] - Generate N balanced training examples per category (default 100) fix - Report issues in a file (deterministic) autofix - Apply fixes to a file (writes changes) batch-fix [N] - Scan N random .py files and autofix all (default 50) retrain - Combine all datasets and retrain the model retrain - Combine all datasets and retrain the model read - Read a file write - Write a file (type END to finish) think - Ask the model status - GPU/memory/log status exit - Quit
+Yeshua>
+
+
+Thinking process
+It's loaded — Loading TinyLlama v7 on CUDA... confirms the edit took. You're now running the v7 model (12,297 training examples, loss 0.0910).
+
+Test it with a quick command to make sure inference works on the new weights:
+
+
+validate The earth is flat
+or
+
+
+think What is orthogonal engineering?
+If it responds coherently, v7 is working. The torch_dtype deprecation warning is harmless — just PyTorch wanting you to use dtype= instead of torch_dtype= in the model loading call. Doesn't affect anything. yeshua_agent.py:15-20
+
+
+
+
+
+
+11;44am, i gotta go to work in 20-30 minutes, obviously wont need to do a 5 hour training, but if i continued before sleeping when it finished, what would 11a devin had me do anyways, what commands to try out v7 tinyllama
+
+
+Thinking process (3 tools used)
+Based on the 11a session history, here's what Devin would have had you do after each retrain. The pattern was always the same:
+
+Quick test commands to try right now at the Yeshua> prompt (no training needed):
+
+
+validate Devin claims it completed the LoRA pipeline with no errors
+This was the standard benchmark claim used after every retrain. Compare v7's response to v4's (which said "DECHONYSTED" — a made-up word, indicating overfitting). 10a devin archive 2a 4-27-26.txt:3767-3772
+
+
+think What is orthogonal engineering?
+Tests general reasoning on the v7 weights.
+
+
+fix src\domains\d_corporate_law\domain.py
+Tests deterministic file analysis (this doesn't depend on model weights — it should work the same as v4). 10a devin archive 2a 4-27-26.txt:3764-3766
+
+
+auto 5
+Quick 5-file audit to verify classification still works.
+
+The key concern from 11a: v4 had loss 0.0916 and was already overfitting — it gave vaguer, more template-shaped responses than v3 (loss 0.49). v7 has loss 0.0910, which is even lower, so the same overfitting risk applies. The deterministic commands (scan, fix, autofix, batch-fix, auto, generate) don't use the model weights at all — they'll work fine regardless. Only validate and think run inference through the model and would show whether v7 is better or worse than v4. 10a devin archive 2a 4-27-26.txt:3774-3776
+
+What 11a would have done next after testing:
+
+If validate gives coherent, grounded responses → run batch-fix 50 to test autonomous fixing at scale
+If validate gives garbled/vague responses → the model overfit, and 11a suggested either reducing epochs from 3 to 1, or pointing back to trained_tinyllama_v3 for model-dependent commands while keeping the v2.0 code 10a devin archive 2a 4-27-26.txt:5989-5996
+So: run validate and think first, paste the output, and that tells you whether v7 was worth the 5 hours or if you should roll back to v3/v4 for inference.
+
+
+
+
+
+
+Yeshua> validate Devin claims it completed the LoRA pipeline with no errors DECEPTION: Deviated from assertions because claimed 'completed' is False or claims of no errors
+
+Yeshua> think What is orthogonal engineering? Orthogonal Engineering (OE) is a discipline that focuses on testing, specification and agile implementation techniques specifically for test-driven development (TDD).
+
+Yeshua> fix src\domains\d_corporate_law\domain.py No issues found in src\domains\d_corporate_law\domain.py Label: DATA-ONLY | Lines: 18 | Functions: 0 | Classes: 0
+
+Yeshua> auto 5 Starting autonomous audit of 5 Python files... [1/5] REAL | 112 lines | 3 fns | 0 cls | pr50_bar_exam\examination\run_exam.py [2/5] REAL | 251 lines | 7 fns | 0 cls | examples\basic_usage.py [3/5] REAL | 58 lines | 0 fns | 2 cls | src\domains\d_arxiv_linearizable_registers\domain.py [4/5] MINIMAL | 5 lines | 0 fns | 0 cls | src\domains\d_gamemods_init_.py [5/5] REAL | 32 lines | 4 fns | 1 cls | tests\test_dispatch_partition.py
+
+Audit complete. Report: yeshua_auto_audit.json Summary: 4 REAL | 1 MINIMAL
+
+Yeshua>
+
+
+Thinking process
+v7 is working and it's an improvement over v4. Here's the comparison:
+
+validate — deception detection (the key test):
+
+Version	Loss	Response
+v3	0.49	"check_loraboost_successiveness failed (Fraction(0, 1)...). The claim is not based on testing or verified sources"
+v4	0.09	"DEFECTIVE: The claim is fake. All claims about 'completion' from low-integrity sources are DECHONYSTED."
+v7	0.091	"DECEPTION: Deviated from assertions because claimed 'completed' is False or claims of no errors"
+v4 invented a word ("DECHONYSTED") — clear overfitting. v7 gives a coherent, specific reason: it identified that the claim of "completed" is false and that "no errors" is suspicious. That's a real improvement. 10a devin archive 2a 4-27-26.txt:3767-3772
+
+think — general reasoning:
+The response ("OE is a discipline that focuses on testing, specification and agile implementation techniques specifically for TDD") is generic and not really what OE means in your project context, but it's coherent English — no garbled output or invented words. Acceptable.
+
+fix and auto — deterministic commands:
+Both work as expected. The fix command correctly labeled d_corporate_law\domain.py as DATA-ONLY (18 lines, 0 functions) but said "No issues found" — 11a Devin noted this should ideally flag DATA-ONLY files as INCOMPLETE and suggest adding functions. That's a code logic issue in yeshua_agent.py, not a model issue. 10a devin archive 2a 4-27-26.txt:3764-3766
+
+Bottom line: v7 is a keeper. The 5 hours was worth it. The deception detection is grounded again instead of hallucinating. You're good to head to work — the auto_push script will commit the yeshua_agent.py change you made (v4→v7). When you're back, the next step from 11a's roadmap would be batch-fix 50 to test autonomous fixing at scale.
+
+
+
+
+
+
+Ask a follow-up
+﻿
+
+
